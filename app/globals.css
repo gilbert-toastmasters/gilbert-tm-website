@@ -1,18 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --toastmasters-burgundy: #772432;
-  --toastmasters-gold: #c4a44a;
+  /* Toastmasters Brand Colors */
+  --tm-red: #772432;
+  --tm-blue-loyal: #004165;
+  --tm-blue-blissful: #006094;
+  --tm-grey: #A9B2B1;
+  --tm-light-grey: #f5f5f5;
+  --tm-yellow: #F2DF74;
   --dark-color: #1C1C1C;
-  --light-bg: #f8f8f8;
+
+  /* Maroon Gradient Colors */
+  --tm-maroon-deep: #3B0104;
+  --tm-maroon-rich: #781327;
+
+  /* Blue Gradients (from brand guidelines) */
+  /* Linear top to bottom: background: linear-gradient(to bottom, #004165, #006094); */
+  /* Linear bottom to top: background: linear-gradient(to top, #004165, #006094); */
+  /* Linear left to right: background: linear-gradient(to right, #004165, #006094); */
+  /* Radial: background: radial-gradient(circle, #006094, #004165); */
+
+  /* Maroon Gradients (from brand guidelines) */
+  /* Linear top to bottom: background: linear-gradient(to bottom, #3B0104, #781327); */
+  /* Linear bottom to top: background: linear-gradient(to top, #3B0104, #781327); */
+  /* Linear left to right: background: linear-gradient(to right, #3B0104, #781327); */
+  /* Radial: background: radial-gradient(circle, #781327, #3B0104); */
+
+  /* Cool Gray Gradients (from brand guidelines) */
+  /* Note: Opacity can be used in increments of 20% as needed */
+  /* Linear top to bottom: background: linear-gradient(to bottom, #A9B2B1, #F5F5F5); */
+  /* Linear bottom to top: background: linear-gradient(to top, #A9B2B1, #F5F5F5); */
+  /* Linear left to right: background: linear-gradient(to right, #A9B2B1, #F5F5F5); */
+  /* Radial: background: radial-gradient(circle, #F5F5F5, #A9B2B1); */
+
+  /* Transparencies (from brand guidelines) */
+  /* White 70% on Blue gradient: rgba(255,255,255,0.7) */
+  /* White 70% on Maroon gradient: rgba(255,255,255,0.7) */
+  /* Loyal Blue 70% on Gray gradient: rgba(0,65,101,0.7) */
+  /* Note: Ensure good contrast - avoid white text on light bg, black text on dark bg */
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   color: var(--dark-color);
   background-color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
+
+/* Hero video responsive crop */
+.hero-video {
+  object-position: center 5vh; /* Mobile: show more of the top (heads) */
+}
+
+@media (min-width: 768px) {
+  .hero-video {
+    object-position: center -20vh; /* Desktop: current position */
+  }
+}
+
+/* Timeline arrows responsive */
+.arrow-1 {
+  transform: translateX(-40vw); /* Mobile */
+}
+
+.arrow-2 {
+  transform: scaleX(-1) translateX(-20vw) translateY(-4vh); /* Mobile */
+}
+
+.arrow-3 {
+  transform: translateX(20vw) translateY(-5vh); /* Mobile */
+}
+
+@media (min-width: 768px) {
+  .arrow-1 {
+    transform: none; /* Desktop: centered */
+  }
+  .arrow-2 {
+    transform: scaleX(-1) translateY(-5vh); /* Desktop: centered, keep flip, moved up */
+  }
+  .arrow-3 {
+    transform: translateX(10vw) translateY(-5vh); /* Desktop: right 10, up 5 */
+  }
+}
+
+/*
+  FONT REFERENCE (Toastmasters Brand)
+  ------------------------------------
+  Headlines/Subheads: 'Montserrat', sans-serif (free Gotham alternative)
+  Body Text: 'Source Sans 3', sans-serif
+  Script (special events): 'Corinthia', cursive
+  Script (special events): 'Luxurious Script', cursive
+*/

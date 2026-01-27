@@ -1,64 +1,166 @@
+'use client'
+
+import Image from 'next/image'
+
+function getNextThursday() {
+  const now = new Date()
+  const dayOfWeek = now.getDay()
+  const daysUntilThursday = (4 - dayOfWeek + 7) % 7 || 7 // 4 = Thursday
+
+  const nextThursday = new Date(now)
+  nextThursday.setDate(now.getDate() + daysUntilThursday)
+  nextThursday.setHours(19, 0, 0, 0) // 7pm
+
+  return nextThursday
+}
+
+function getCalendarUrl() {
+  const start = getNextThursday()
+  const end = new Date(start)
+  end.setHours(20, 0, 0, 0) // 8pm (1 hour meeting)
+
+  const formatDate = (date: Date) => {
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+  }
+
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: 'Gilbert Toastmasters Meeting',
+    dates: `${formatDate(start)}/${formatDate(end)}`,
+    details: 'Weekly Toastmasters meeting. Just show up—no RSVP needed!',
+    location: 'Greenfield Jr. High Library, 101 S Greenfield Rd, Gilbert, AZ 85296',
+  })
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`
+}
+
 export default function MeetingInfo() {
   return (
     <section id="meetings" className="py-20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#772432' }}>
-            Join Us Every Thursday
-          </h2>
-          <p className="text-lg text-gray-600">
-            All are welcome! Come as a guest and see what Toastmasters is all about.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <div className="flex items-start gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: '#c4a44a' }}
-              >
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">When</h3>
-                <p className="text-gray-700 text-lg">Every Thursday</p>
-                <p className="text-2xl font-bold" style={{ color: '#772432' }}>7:00 PM</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <div className="flex items-start gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: '#c4a44a' }}
-              >
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Where</h3>
-                <p className="text-gray-700 text-lg">Greenfield Jr High</p>
-                <p className="text-gray-600">Library</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="join" className="mt-12 text-center">
-          <p className="text-gray-600 mb-4">Questions? Contact us:</p>
           <a
-            href="tel:+16023451008"
-            className="text-xl font-semibold hover:underline"
-            style={{ color: '#772432' }}
+            href={getCalendarUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl md:text-5xl font-black mb-2 inline-block cursor-pointer transition-transform duration-200 hover:scale-110 text-black"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            (602) 345-1008
+            Thursdays,{' '}
+            <span className="relative inline-block font-normal" style={{ fontFamily: 'Source Sans 3, sans-serif' }}>
+              7pm
+              <svg
+                className="absolute -inset-4 w-[calc(100%+32px)] h-[calc(100%+32px)]"
+                viewBox="0 0 100 50"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 8 28 C 5 18, 15 8, 30 6 C 50 3, 75 5, 88 12 C 98 18, 97 32, 85 40 C 70 48, 40 49, 20 44 C 8 40, 6 35, 8 28"
+                  stroke="#000000"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+            </span>
           </a>
+          <p className="text-3xl md:text-5xl font-black text-black mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>Greenfield Jr. High Library</p>
+          <p className="text-3xl md:text-5xl font-black text-black" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Just show up. Seriously—<span className="relative inline-block font-normal" style={{ fontFamily: 'Source Sans 3, sans-serif' }}>
+              no RSVP
+              <svg
+                className="absolute left-0 -bottom-2 w-full h-3"
+                viewBox="0 0 100 12"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 0 6 Q 10 2, 20 6 T 40 6 T 60 6 T 80 6 T 100 6"
+                  stroke="#000000"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+            </span>, no pressure.
+          </p>
+          <div className="text-xl md:text-2xl text-gray-600 mt-10">
+            <p>Want to double-check we're meeting?</p>
+            <p>
+              Email our VP of Membership at{' '}
+              <a href="mailto:vpm-499@toastmastersclubs.org" className="underline hover:no-underline" style={{ color: '#772432' }}>
+                vpm-499@toastmastersclubs.org
+              </a>
+            </p>
+            <p>But we're always there. Almost always.</p>
+          </div>
+        </div>
+
+        <div className="relative h-[50vh] w-full flex justify-center">
+          {/* Meeting photo - tilted left */}
+          <div
+            className="absolute left-[10%] top-0 bg-white p-3 shadow-xl rounded-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+            style={{ transform: 'rotate(-6deg)' }}
+          >
+            <Image
+              src="/images/Toastmasters-Meeting-at-Greenfield-Junior-High.webp"
+              alt="Toastmasters meeting at Greenfield Junior High"
+              width={500}
+              height={350}
+              className="w-[35vw] max-w-[400px] h-[30vh] max-h-[300px] object-cover rounded-lg"
+            />
+          </div>
+          {/* Address - positioned between photos */}
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=101+S+Greenfield+Rd+Gilbert+AZ+85296"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute left-[55%] top-[6vh] z-20 text-lg md:text-xl cursor-pointer hover:underline text-black"
+            style={{ transform: 'rotate(-2deg)' }}
+          >
+            101 S Greenfield Rd, Gilbert, AZ 85296
+          </a>
+          {/* Hand-drawn arrow pointing to photos */}
+          <svg
+            className="absolute left-[58%] top-[10vh] z-20 w-24 h-16"
+            style={{ transform: 'scaleX(-1)' }}
+            viewBox="0 0 100 70"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 10 5 C 20 15, 30 35, 50 50 C 60 58, 70 62, 85 60"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 75 52 L 88 60 L 78 68"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          {/* School entrance photo - tilted right, overlapping */}
+          <div
+            className="absolute left-[40%] top-[22vh] bg-white p-3 shadow-xl rounded-xl z-10 transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+            style={{ transform: 'rotate(4deg)' }}
+          >
+            <Image
+              src="/images/Greenfield-Junior-High-Entrance-.webp"
+              alt="Greenfield Junior High entrance"
+              width={500}
+              height={350}
+              className="w-[35vw] max-w-[400px] h-[30vh] max-h-[300px] object-cover rounded-lg"
+            />
+          </div>
         </div>
       </div>
     </section>
