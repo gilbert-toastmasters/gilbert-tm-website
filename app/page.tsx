@@ -4,6 +4,7 @@ import MeetingInfo from '@/components/MeetingInfo'
 import WhatToExpect from '@/components/WhatToExpect'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
+import InstagramFeed from '@/components/InstagramFeed'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WhatToExpect />
       <Testimonials />
       <FAQ />
+      <InstagramFeed />
       <Footer />
     </main>
   )
