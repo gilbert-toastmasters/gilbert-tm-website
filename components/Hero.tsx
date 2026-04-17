@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-8 md:px-16">
         <p className="text-lg md:text-xl mb-4 tracking-widest uppercase">
           Listen, Think, and Speak
         </p>
@@ -38,26 +38,8 @@ export default function Hero() {
           Gilbert Toastmasters
         </h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl">
-          We bring pompoms to district events.<br />
-          We also give really good evaluations.
+          We&apos;ve been doing this since 1978. President&apos;s Distinguished every year. But we&apos;re not here to impress you, we&apos;re here to help you get better.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="https://www.toastmasters.org/Find-a-Club/00000499-gilbert-toastmasters-club/contact-club?id=b6803e9a-8cd7-ec11-a2fd-005056875f20"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 rounded-full font-semibold transition-all hover:scale-105"
-            style={{ backgroundColor: '#F2DF74', color: '#1C1C1C' }}
-          >
-            Join a Meeting
-          </a>
-          <a
-            href="#about"
-            className="px-8 py-3 rounded-full font-semibold border-2 border-white text-white hover:bg-white hover:text-[#772432] transition-all"
-          >
-            Learn More
-          </a>
-        </div>
       </div>
     </section>
   )

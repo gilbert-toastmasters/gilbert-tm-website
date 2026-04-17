@@ -2,9 +2,10 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import MeetingInfo from '@/components/MeetingInfo'
 import WhatToExpect from '@/components/WhatToExpect'
+import WhyPeopleJoin from '@/components/WhyPeopleJoin'
 import Testimonials from '@/components/Testimonials'
+import WhoWeAre from '@/components/WhoWeAre'
 import FAQ from '@/components/FAQ'
-import InstagramFeed from '@/components/InstagramFeed'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -14,9 +15,10 @@ export default function Home() {
       <Hero />
       <MeetingInfo />
       <WhatToExpect />
+      <WhyPeopleJoin />
       <Testimonials />
+      <WhoWeAre />
       <FAQ />
-      <InstagramFeed />
       <Footer />
     </main>
   )

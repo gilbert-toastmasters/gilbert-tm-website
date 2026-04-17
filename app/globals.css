@@ -53,13 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero video responsive crop */
 .hero-video {
-  object-position: center 5vh; /* Mobile: show more of the top (heads) */
-}
-
-@media (min-width: 768px) {
-  .hero-video {
-    object-position: center -20vh; /* Desktop: current position */
-  }
+  object-position: center center;
 }
 
 /* Timeline arrows responsive */
