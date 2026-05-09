@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 const NAV_LINKS = [
@@ -13,6 +14,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white border-b border-black/5">
@@ -40,14 +42,14 @@ export default function Header() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8 group/nav">
             {NAV_LINKS.map((link) => {
-              const isHome = link.href === '/'
+              const isActive = link.href === pathname
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={
                     'text-sm font-semibold tracking-wider uppercase transition-colors border-b-4 pb-1 ' +
-                    (isHome
+                    (isActive
                       ? 'nav-home text-[#772432] border-[#772432] group-has-[.nav-other:hover]/nav:border-transparent group-has-[.nav-other:hover]/nav:text-[#1C1C1C]'
                       : 'nav-other text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
                   }
