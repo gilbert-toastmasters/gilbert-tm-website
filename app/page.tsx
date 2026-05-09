@@ -1,7 +1,9 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import MeetingInfo from '@/components/MeetingInfo'
+import QuickFacts from '@/components/QuickFacts'
+import FindUs from '@/components/FindUs'
 import WhatToExpect from '@/components/WhatToExpect'
+import Stats from '@/components/Stats'
 import WhyPeopleJoin from '@/components/WhyPeopleJoin'
 import Testimonials from '@/components/Testimonials'
 import WhoWeAre from '@/components/WhoWeAre'
@@ -13,11 +15,13 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <MeetingInfo />
+      <QuickFacts />
+      <FindUs />
       <WhatToExpect />
-      <WhyPeopleJoin />
+      <Stats />
       <Testimonials />
       <WhoWeAre />
+      <WhyPeopleJoin />
       <FAQ />
       <Footer />
     </main>

@@ -1,65 +1,97 @@
-const steps = [
+import Image from 'next/image'
+
+const STEPS = [
   {
-    title: 'Sign Up',
+    num: 'Step 01',
+    title: 'Sign in',
     body: "Grab a name tag at the welcome table. We'll ask how you found us.",
   },
   {
-    title: 'Meeting Starts',
-    body: "Early on, you'll stand and introduce yourself—your name and what brought you here. It's brief and low-pressure.",
+    num: 'Step 02',
+    title: 'Meeting starts',
+    body:
+      "Early on, you'll stand and introduce yourself — your name and what brought you here. Brief and low-pressure.",
   },
   {
-    title: 'Engage in the Meeting',
-    body: "You'll see members give speeches and receive feedback. You may be invited to try Table Topics—1–2 minutes of impromptu speaking. You can pass, but most guests give it a shot.",
+    num: 'Step 03',
+    title: 'Engage',
+    body:
+      'Watch members give speeches and feedback. You may be invited to try Table Topics — 1–2 minutes of impromptu speaking. You can pass; most guests give it a shot.',
   },
   {
-    title: 'Meeting Closure',
-    body: "At the end, we'll ask what you thought. We welcome your feedback.",
+    num: 'Step 04',
+    title: 'Closure',
+    body:
+      "At the end, we'll ask what you thought. We welcome your honest feedback.",
   },
 ]
 
 export default function WhatToExpect() {
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <p
-          className="text-sm md:text-base tracking-widest uppercase mb-4"
-          style={{ color: '#772432', fontFamily: 'Montserrat, sans-serif' }}
-        >
-          What to expect when you visit
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-black mb-6 text-black"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
-          Your first visit
-        </h2>
-        <p className="text-lg md:text-xl text-gray-700 mb-16 max-w-2xl">
-          You&apos;ll watch, you&apos;ll learn—and yes, you might get called on.
-        </p>
+    <section className="bg-[#F5F5F5]">
+      {/* Photo banner */}
+      <div className="relative h-[300px] md:h-[460px] overflow-hidden">
+        <Image
+          src="/images/whattoexpect-bg.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority={false}
+          sizes="100vw"
+          className="object-cover object-[center_25%]"
+        />
+      </div>
 
-        <ol className="space-y-12">
-          {steps.map((step, i) => (
-            <li key={step.title} className="grid grid-cols-[auto_1fr] gap-6 md:gap-10">
+      {/* White card overlapping the photo + extending below */}
+      <div className="max-w-6xl mx-auto px-6 -mt-24 md:-mt-40 relative z-10 pb-20 md:pb-28">
+        <div className="bg-white rounded-lg shadow-xl px-6 md:px-12 py-10 md:py-14">
+          {/* Header */}
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 md:gap-14 md:items-end mb-10 md:mb-12">
+            <div>
+              <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+                What to expect
+              </p>
+              <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight">
+                Your first
+                <br />
+                visit, mapped.
+              </h2>
+            </div>
+            <p className="text-[#1C1C1C]/70 text-lg leading-relaxed max-w-xl">
+              You&apos;ll watch, you&apos;ll learn, and yes, you might get
+              called on. Here&apos;s the full arc of a Thursday meeting from
+              the moment you walk in.
+            </p>
+          </div>
+
+          {/* 4-step grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 border-t border-b border-black/10">
+            {STEPS.map((step, i) => (
               <div
-                className="text-3xl md:text-4xl font-black text-black tabular-nums"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
+                key={step.num}
+                className={
+                  'px-6 py-7 md:py-8 ' +
+                  (i < STEPS.length - 1
+                    ? 'border-b md:border-b-0 md:border-r border-black/10'
+                    : '')
+                }
               >
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <div>
-                <h3
-                  className="text-xl md:text-2xl font-black text-black mb-2"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="block w-7 h-1 bg-[#F2DF74]" />
+                  <span className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432]">
+                    {step.num}
+                  </span>
+                </div>
+                <h3 className="font-bold text-[#1C1C1C] text-xl md:text-[22px] leading-tight tracking-tight mb-2">
                   {step.title}
                 </h3>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                <p className="text-[#1C1C1C]/70 text-[15px] leading-relaxed">
                   {step.body}
                 </p>
               </div>
-            </li>
-          ))}
-        </ol>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

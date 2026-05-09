@@ -67,52 +67,61 @@ export default function FAQ() {
 
   return (
     <section className="py-24 md:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <p
-          className="text-sm md:text-base tracking-widest uppercase mb-4"
-          style={{ color: '#772432', fontFamily: 'Montserrat, sans-serif' }}
-        >
-          FAQs
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-black mb-16 text-black"
-          style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
-          Common questions
-        </h2>
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-14 items-start">
+          {/* Left — eyebrow + heading + sub */}
+          <div>
+            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+              Common questions
+            </p>
+            <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight uppercase mb-6">
+              Asked
+              <br />
+              and answered.
+            </h2>
+            <p className="text-[#1C1C1C]/70 text-base leading-relaxed max-w-sm">
+              Still wondering? Email our VP of Membership at{' '}
+              <a
+                href="mailto:vpm-499@toastmastersclubs.org"
+                className="underline hover:text-[#772432]"
+              >
+                vpm-499@toastmastersclubs.org
+              </a>
+              . We&apos;d rather you ask than guess.
+            </p>
+          </div>
 
-        <ul className="divide-y divide-gray-200 border-t border-b border-gray-200">
-          {faqs.map((faq, i) => {
-            const isOpen = openIndex === i
-            return (
-              <li key={faq.question}>
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 py-6 text-left hover:opacity-70 transition-opacity"
-                  aria-expanded={isOpen}
-                >
-                  <span
-                    className="text-lg md:text-xl font-black text-black"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+          {/* Right — FAQ list */}
+          <ul className="border-t border-b border-black/10 divide-y divide-black/10">
+            {faqs.map((faq, i) => {
+              const isOpen = openIndex === i
+              return (
+                <li key={faq.question}>
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="group w-full flex items-center justify-between gap-4 py-5 md:py-6 text-left"
+                    aria-expanded={isOpen}
                   >
-                    {faq.question}
-                  </span>
-                  <span
-                    className="text-2xl font-light text-black flex-shrink-0"
-                    aria-hidden
-                  >
-                    {isOpen ? '−' : '+'}
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="pb-6 text-base md:text-lg text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                )}
-              </li>
-            )
-          })}
-        </ul>
+                    <span className="font-bold text-[#1C1C1C] text-lg md:text-xl group-hover:text-[#772432] transition-colors">
+                      {faq.question}
+                    </span>
+                    <span
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-2xl font-bold text-[#772432] flex-shrink-0 group-hover:bg-[#F2DF74] transition-colors"
+                      aria-hidden
+                    >
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="pb-5 md:pb-6 text-[#1C1C1C]/70 text-base md:text-[17px] leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   )

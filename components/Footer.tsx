@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="text-black py-12 bg-white">
+    <footer id="contact" className="text-black py-12 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -64,6 +64,11 @@ export default function Footer() {
             <p>
               <a href="tel:+16023451008" className="hover:text-[#772432] transition-colors">
                 (602) 345-1008
+              </a>
+            </p>
+            <p className="mt-2">
+              <a href="mailto:vpm-499@toastmastersclubs.org" className="hover:text-[#772432] transition-colors">
+                vpm-499@toastmastersclubs.org
               </a>
             </p>
           </div>
