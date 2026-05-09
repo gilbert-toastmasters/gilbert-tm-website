@@ -5,7 +5,7 @@ export default function QuickFacts() {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-6 md:gap-10 items-center">
           {/* WHEN */}
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase text-[#772432] mb-2">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-2">
               When
             </p>
             <p className="text-lg md:text-xl font-bold text-[#1C1C1C]">
@@ -18,7 +18,7 @@ export default function QuickFacts() {
 
           {/* WHERE */}
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase text-[#772432] mb-2">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-2">
               Where
             </p>
             <p className="text-lg md:text-xl font-bold text-[#1C1C1C]">
@@ -31,7 +31,7 @@ export default function QuickFacts() {
 
           {/* QUESTIONS */}
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase text-[#772432] mb-2">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-2">
               Questions
             </p>
             <p className="text-lg md:text-xl font-bold text-[#1C1C1C] break-words">
@@ -47,7 +47,7 @@ export default function QuickFacts() {
           {/* CTA pill */}
           <div className="md:justify-self-end">
             <span className="inline-block rounded-full bg-[#F2DF74] text-[#1C1C1C] font-semibold uppercase tracking-wider text-sm px-6 py-3">
-              Visitors Welcome &middot; No RSVP
+              Free to Visit &middot; No RSVP
             </span>
           </div>
         </div>

@@ -38,7 +38,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 group/nav">
             {NAV_LINKS.map((link) => {
               const isHome = link.href === '/'
               return (
@@ -46,10 +46,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={
-                    'text-sm font-semibold tracking-wider uppercase transition-colors ' +
+                    'text-sm font-semibold tracking-wider uppercase transition-colors border-b-4 pb-1 ' +
                     (isHome
-                      ? 'text-[#772432] border-b-2 border-[#772432] pb-1'
-                      : 'text-[#1C1C1C] hover:text-[#772432]')
+                      ? 'nav-home text-[#772432] border-[#772432] group-has-[.nav-other:hover]/nav:border-transparent group-has-[.nav-other:hover]/nav:text-[#1C1C1C]'
+                      : 'nav-other text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
                   }
                 >
                   {link.label}

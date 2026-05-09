@@ -4,7 +4,6 @@ import QuickFacts from '@/components/QuickFacts'
 import FindUs from '@/components/FindUs'
 import WhatToExpect from '@/components/WhatToExpect'
 import Stats from '@/components/Stats'
-import WhyPeopleJoin from '@/components/WhyPeopleJoin'
 import Testimonials from '@/components/Testimonials'
 import WhoWeAre from '@/components/WhoWeAre'
 import FAQ from '@/components/FAQ'
@@ -21,7 +20,6 @@ export default function Home() {
       <Stats />
       <Testimonials />
       <WhoWeAre />
-      <WhyPeopleJoin />
       <FAQ />
       <Footer />
     </main>

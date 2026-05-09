@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 const testimonials = [
   {
@@ -46,7 +46,7 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[number] }) {
           <div className="w-11 h-11 rounded-full bg-[#772432] text-white font-bold text-sm flex items-center justify-center shrink-0">
             {t.initials}
           </div>
-          <p className="font-bold text-[15px] text-[#1C1C1C]">{t.name}</p>
+          <p className="font-bold text-lg text-[#1C1C1C]">{t.name}</p>
         </div>
         {canExpand && (
           <button
@@ -62,16 +62,24 @@ function TestimonialCard({ t }: { t: (typeof testimonials)[number] }) {
 }
 
 export default function Testimonials() {
+  const scrollerRef = useRef<HTMLDivElement>(null)
+
+  const scrollByOne = (dir: -1 | 1) => {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollBy({ left: dir * el.clientWidth, behavior: 'smooth' })
+  }
+
   return (
     <section className="bg-[#F5F5F5] py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 md:gap-14 md:items-end mb-12 md:mb-14">
           <div>
-            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
               Success stories
             </p>
-            <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight">
+            <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight">
               Real members.
               <br />
               Real stories.
@@ -82,8 +90,42 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* 3-card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Mobile: carousel */}
+        <div className="md:hidden">
+          <div
+            ref={scrollerRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-6 px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {testimonials.map((t) => (
+              <div key={t.name} className="snap-start shrink-0 w-full pr-4 last:pr-0">
+                <TestimonialCard t={t} />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-3 mt-6">
+            <button
+              onClick={() => scrollByOne(-1)}
+              aria-label="Previous testimonial"
+              className="w-11 h-11 rounded-full bg-[#F2DF74] text-[#1C1C1C] flex items-center justify-center hover:brightness-95 transition"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => scrollByOne(1)}
+              aria-label="Next testimonial"
+              className="w-11 h-11 rounded-full bg-[#F2DF74] text-[#1C1C1C] flex items-center justify-center hover:brightness-95 transition"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop: 3-card grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6">
           {testimonials.map((t) => (
             <TestimonialCard key={t.name} t={t} />
           ))}

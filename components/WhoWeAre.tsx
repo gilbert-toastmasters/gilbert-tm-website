@@ -1,16 +1,44 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 export default function WhoWeAre() {
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = headingRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.3 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <section className="bg-white py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left — Copy */}
           <div>
-            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
               Who we are
             </p>
-            <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-6">
+            <h2
+              ref={headingRef}
+              className={
+                'font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-6 transition-all duration-700 ease-out ' +
+                (visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12')
+              }
+            >
               50+ members.
               <br />
               Every Thursday.

@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 const STEPS = [
   {
@@ -27,6 +30,25 @@ const STEPS = [
 ]
 
 export default function WhatToExpect() {
+  const gridRef = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.2 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <section className="bg-[#F5F5F5]">
       {/* Photo banner */}
@@ -48,10 +70,10 @@ export default function WhatToExpect() {
           {/* Header */}
           <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 md:gap-14 md:items-end mb-10 md:mb-12">
             <div>
-              <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+              <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
                 What to expect
               </p>
-              <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight">
+              <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight">
                 Your first
                 <br />
                 visit, mapped.
@@ -65,12 +87,15 @@ export default function WhatToExpect() {
           </div>
 
           {/* 4-step grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 border-t border-b border-black/10">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-4 border-t border-b border-black/10">
             {STEPS.map((step, i) => (
               <div
                 key={step.num}
+                style={{ transitionDelay: visible ? `${i * 250}ms` : '0ms' }}
                 className={
-                  'px-6 py-7 md:py-8 ' +
+                  'px-6 py-7 md:py-8 transition-all duration-700 ease-out ' +
+                  (visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4') +
+                  ' ' +
                   (i < STEPS.length - 1
                     ? 'border-b md:border-b-0 md:border-r border-black/10'
                     : '')
@@ -78,7 +103,7 @@ export default function WhatToExpect() {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <span className="block w-7 h-1 bg-[#F2DF74]" />
-                  <span className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432]">
+                  <span className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432]">
                     {step.num}
                   </span>
                 </div>

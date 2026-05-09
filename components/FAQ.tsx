@@ -66,15 +66,15 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-24 md:py-32 bg-white border-t border-black/10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-14 items-start">
           {/* Left — eyebrow + heading + sub */}
           <div>
-            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#772432] mb-3">
+            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
               Common questions
             </p>
-            <h2 className="font-bold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight uppercase mb-6">
+            <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-6">
               Asked
               <br />
               and answered.
@@ -102,7 +102,7 @@ export default function FAQ() {
                     className="group w-full flex items-center justify-between gap-4 py-5 md:py-6 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-bold text-[#1C1C1C] text-lg md:text-xl group-hover:text-[#772432] transition-colors">
+                    <span className="inline-block origin-left font-bold text-[#1C1C1C] text-lg md:text-xl transition-all duration-200 group-hover:text-[#772432] group-hover:translate-x-2 group-hover:scale-110">
                       {faq.question}
                     </span>
                     <span

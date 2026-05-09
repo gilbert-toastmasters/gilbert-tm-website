@@ -13,16 +13,10 @@ export default function WhyPeopleJoin() {
       />
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="md:max-w-2xl bg-white rounded-lg shadow-xl px-7 md:px-10 py-10 md:py-12">
-          <p
-            className="text-sm md:text-base tracking-widest uppercase mb-4 text-[#772432]"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
+          <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
             Why people join
           </p>
-          <h2
-            className="text-3xl md:text-5xl font-black mb-10 text-[#1C1C1C]"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
+          <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-10">
             Most people don&apos;t show up because they want to become public speakers.
           </h2>
           <div className="space-y-6 text-base md:text-lg leading-relaxed text-[#1C1C1C]/80">
