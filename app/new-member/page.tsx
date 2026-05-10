@@ -93,15 +93,7 @@ export default function NewMember() {
       <div id="emails" className="scroll-mt-32">
         <EmailOptIn />
       </div>
-      <div
-        id="icebreaker"
-        className="scroll-mt-32 bg-white border-y border-black/10"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle, rgba(119, 36, 50, 0.06) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-        }}
-      >
+      <div id="icebreaker" className="scroll-mt-32 bg-white border-y border-black/10">
         <Icebreaker />
         <HowItWorks />
       </div>

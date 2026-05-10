@@ -17,7 +17,10 @@ const NAV_LINKS: NavItem[] = [
   {
     label: 'For Members',
     href: '/for-members',
-    children: [{ label: 'New Member Area', href: '/new-member' }],
+    children: [
+      { label: 'New Member Area', href: '/new-member' },
+      { label: 'Icebreaker Guide', href: '/icebreaker' },
+    ],
   },
   { label: 'Blog', href: '/blog' },
 ]

@@ -75,16 +75,26 @@ export default function Stats() {
   }, [])
 
   return (
-    <section className="bg-[#F5F5F5] py-24 md:py-32 border-y border-black/10">
+    <section
+      className="py-24 md:py-32 border-y border-black/10"
+      style={{
+        backgroundColor: '#F8F5F2',
+        backgroundImage:
+          "linear-gradient(rgba(248, 245, 242, 0.5), rgba(248, 245, 242, 0.5)), url('/images/contour-pattern.svg')",
+        backgroundSize: 'auto, 400px 400px',
+        backgroundRepeat: 'repeat, repeat',
+      }}
+    >
       <div className="max-w-6xl mx-auto px-6">
-        <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
-          Our track record
-        </p>
-        <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-12 md:mb-14">
-          The numbers speak for themselves.
-        </h2>
+        <div className="bg-white rounded-lg shadow-xl px-7 md:px-12 py-12 md:py-16">
+          <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
+            Our track record
+          </p>
+          <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-12 md:mb-14">
+            The numbers speak for themselves.
+          </h2>
 
-        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+          <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
           {STATS.map((stat, i) => {
             const delay = i * 200
             const key = stat.kind === 'fade' ? stat.display : `${stat.target}${stat.suffix}`
@@ -112,6 +122,7 @@ export default function Stats() {
               </div>
             )
           })}
+          </div>
         </div>
       </div>
     </section>
