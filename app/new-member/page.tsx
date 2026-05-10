@@ -5,9 +5,7 @@ import KeyOfficers from '@/components/KeyOfficers'
 import WhatToExpect from '@/components/WhatToExpect'
 import EmailOptIn from '@/components/EmailOptIn'
 import Icebreaker from '@/components/Icebreaker'
-import IcebreakerTopic from '@/components/IcebreakerTopic'
 import HowItWorks from '@/components/HowItWorks'
-import IcebreakerWorksheet from '@/components/IcebreakerWorksheet'
 import Pathways from '@/components/Pathways'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
@@ -105,9 +103,7 @@ export default function NewMember() {
         }}
       >
         <Icebreaker />
-        <IcebreakerTopic />
         <HowItWorks />
-        <IcebreakerWorksheet />
       </div>
       <div id="pathways" className="scroll-mt-32">
         <Pathways />
