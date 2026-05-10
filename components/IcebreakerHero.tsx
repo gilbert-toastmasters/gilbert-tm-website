@@ -20,9 +20,9 @@ export default function IcebreakerHero() {
           </span>
         </p>
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-[1.06] max-w-4xl">
-          Your First Speech.
+          Your Icebreaker,
           <br />
-          Your Story. Your Way.
+          start to finish.
         </h1>
         <p className="text-lg md:text-xl mb-3 max-w-2xl leading-relaxed">
           Your Icebreaker is a 4-to-6-minute speech where you introduce yourself to the club. It&apos;s Project 1 in Level 1 of any Pathways path, and every Toastmaster gives one.
