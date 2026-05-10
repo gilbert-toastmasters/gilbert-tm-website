@@ -12,7 +12,7 @@ const SLIDES = [
   {
     video: '/videos/hero/hero-2.mp4',
     text: 'We bring pompoms to district events. We also give really good evaluations.',
-    rate: 0.3,
+    rate: 0.25,
   },
 ]
 

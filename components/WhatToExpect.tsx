@@ -16,6 +16,7 @@ type Props = {
   heading: ReactNode
   description: ReactNode
   steps: Step[]
+  animate?: boolean
 }
 
 const COLS_CLASS: Record<number, string> = {
@@ -31,11 +32,13 @@ export default function WhatToExpect({
   heading,
   description,
   steps,
+  animate = true,
 }: Props) {
   const gridRef = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(!animate)
 
   useEffect(() => {
+    if (!animate) return
     const el = gridRef.current
     if (!el) return
     const obs = new IntersectionObserver(
@@ -49,7 +52,7 @@ export default function WhatToExpect({
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [])
+  }, [animate])
 
   const colsClass = COLS_CLASS[steps.length] ?? 'md:grid-cols-4'
 

@@ -1,9 +1,53 @@
 import Header from '@/components/Header'
 import NewMemberHero from '@/components/NewMemberHero'
+import PageNav from '@/components/PageNav'
 import KeyOfficers from '@/components/KeyOfficers'
 import WhatToExpect from '@/components/WhatToExpect'
 import EmailOptIn from '@/components/EmailOptIn'
+import Icebreaker from '@/components/Icebreaker'
+import IcebreakerTopic from '@/components/IcebreakerTopic'
+import HowItWorks from '@/components/HowItWorks'
+import IcebreakerWorksheet from '@/components/IcebreakerWorksheet'
+import Pathways from '@/components/Pathways'
+import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
+
+const PAGE_NAV_ITEMS = [
+  { label: 'Connections', href: '#connections' },
+  { label: 'First Meetings', href: '#first-meetings' },
+  { label: 'Club Emails', href: '#emails' },
+  { label: 'Icebreaker', href: '#icebreaker' },
+  { label: 'Pathways', href: '#pathways' },
+  { label: 'FAQ', href: '#faq' },
+]
+
+const NEW_MEMBER_FAQS = [
+  {
+    question: 'How can I access videos of my speeches?',
+    answer:
+      'Gilbert records speeches during meetings. Ask the Sergeant-at-Arms for links to recordings.',
+  },
+  {
+    question: "What if I'm not interested in a Pathways project?",
+    answer:
+      "Talk to the VPE. There's flexibility in how you use your meeting time, and the VPE can help you figure out what works for your goals.",
+  },
+  {
+    question: "I don't understand how Pathways works. Can someone help me?",
+    answer:
+      "Yes. Ask your mentor or any officer — they'll connect you with someone who can walk you through how the platform works. It's important for the club that members log into Pathways and complete their projects there, so don't hesitate to ask for help.",
+  },
+  {
+    question: "What should I do if I'm struggling to choose an elective project?",
+    answer:
+      "Your mentor is the best resource here. They've been through the paths and can help you pick something that matches where you are. The VPE can also point you in the right direction.",
+  },
+  {
+    question: "What should I do if I'm not available?",
+    answer:
+      "If you're on the schedule, finding a replacement is your responsibility. If you're not sure how, your mentor can walk you through it.",
+  },
+]
 
 const FIRST_MEETINGS_STEPS = [
   {
@@ -33,16 +77,44 @@ export default function NewMember() {
     <main>
       <Header />
       <NewMemberHero />
-      <KeyOfficers />
-      <WhatToExpect
-        bgImage="/images/first-meetings-bg.webp"
-        bgImagePosition="center 40%"
-        eyebrow="Your First Few Meetings"
-        heading="You won't be assigned a role right away."
-        description="The meeting schedule is built four weeks in advance — that means it takes about a month before you appear on the schedule."
-        steps={FIRST_MEETINGS_STEPS}
-      />
-      <EmailOptIn />
+      <PageNav items={PAGE_NAV_ITEMS} />
+      <div id="connections" className="scroll-mt-32">
+        <KeyOfficers />
+      </div>
+      <div id="first-meetings" className="scroll-mt-32">
+        <WhatToExpect
+          bgImage="/images/first-meetings-bg.webp"
+          bgImagePosition="center 40%"
+          eyebrow="Your First Few Meetings"
+          heading="You won't be assigned a role right away."
+          description="The meeting schedule is built four weeks in advance — that means it takes about a month before you appear on the schedule."
+          steps={FIRST_MEETINGS_STEPS}
+          animate={false}
+        />
+      </div>
+      <div id="emails" className="scroll-mt-32">
+        <EmailOptIn />
+      </div>
+      <div
+        id="icebreaker"
+        className="scroll-mt-32 bg-white border-y border-black/10"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle, rgba(119, 36, 50, 0.06) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      >
+        <Icebreaker />
+        <IcebreakerTopic />
+        <HowItWorks />
+        <IcebreakerWorksheet />
+      </div>
+      <div id="pathways" className="scroll-mt-32">
+        <Pathways />
+      </div>
+      <div id="faq" className="scroll-mt-32">
+        <FAQ faqs={NEW_MEMBER_FAQS} />
+      </div>
       <Footer />
     </main>
   )

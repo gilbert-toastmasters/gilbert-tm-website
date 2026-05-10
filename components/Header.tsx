@@ -5,16 +5,31 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-const NAV_LINKS = [
+type NavItem = {
+  label: string
+  href: string
+  children?: { label: string; href: string }[]
+}
+
+const NAV_LINKS: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Meeting Roles', href: '/meeting-roles' },
-  { label: 'For Members', href: '/for-members' },
+  {
+    label: 'For Members',
+    href: '/for-members',
+    children: [{ label: 'New Member Area', href: '/new-member' }],
+  },
   { label: 'Blog', href: '/blog' },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+
+  const isLinkActive = (link: NavItem): boolean => {
+    if (link.href === pathname) return true
+    return !!link.children?.some((c) => c.href === pathname)
+  }
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white border-b border-black/5">
@@ -42,18 +57,43 @@ export default function Header() {
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8 group/nav">
             {NAV_LINKS.map((link) => {
-              const isActive = link.href === pathname
+              const isActive = isLinkActive(link)
+              const linkClass =
+                'text-sm font-semibold tracking-wider uppercase transition-colors border-b-4 pb-1 ' +
+                (isActive
+                  ? 'nav-home text-[#772432] border-[#772432] group-has-[.nav-other:hover]/nav:border-transparent group-has-[.nav-other:hover]/nav:text-[#1C1C1C]'
+                  : 'nav-other text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
+
+              if (link.children?.length) {
+                return (
+                  <div key={link.href} className="relative group/dd">
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                    <div className="absolute left-0 top-full pt-3 hidden group-hover/dd:block">
+                      <div className="bg-white border border-black/10 rounded-md shadow-lg py-2 min-w-[220px]">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={
+                              'block px-4 py-2 text-sm font-semibold tracking-wider uppercase transition-colors border-l-4 ' +
+                              (child.href === pathname
+                                ? 'text-[#772432] border-[#772432]'
+                                : 'text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
+                            }
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+
               return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={
-                    'text-sm font-semibold tracking-wider uppercase transition-colors border-b-4 pb-1 ' +
-                    (isActive
-                      ? 'nav-home text-[#772432] border-[#772432] group-has-[.nav-other:hover]/nav:border-transparent group-has-[.nav-other:hover]/nav:text-[#1C1C1C]'
-                      : 'nav-other text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
-                  }
-                >
+                <Link key={link.href} href={link.href} className={linkClass}>
                   {link.label}
                 </Link>
               )
@@ -87,14 +127,25 @@ export default function Header() {
           <div className="md:hidden mt-4 pb-2 border-t border-black/5 pt-4">
             <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-semibold tracking-wider uppercase text-[#1C1C1C] hover:text-[#772432]"
-                >
-                  {link.label}
-                </Link>
+                <div key={link.href} className="flex flex-col gap-2">
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-sm font-semibold tracking-wider uppercase text-[#1C1C1C] hover:text-[#772432]"
+                  >
+                    {link.label}
+                  </Link>
+                  {link.children?.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="ml-4 text-sm font-semibold tracking-wider uppercase text-[#1C1C1C]/70 hover:text-[#772432]"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
               ))}
               <Link
                 href="/#contact"
