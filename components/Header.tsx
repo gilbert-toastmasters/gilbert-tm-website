@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { ROLES } from './meetingRolesData'
 
 type NavItem = {
   label: string
@@ -13,7 +14,14 @@ type NavItem = {
 
 const NAV_LINKS: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Meeting Roles', href: '/meeting-roles' },
+  {
+    label: 'Meeting Roles',
+    href: '/meeting-roles',
+    children: ROLES.map((r) => ({
+      label: r.title,
+      href: `/meeting-roles#${r.key}`,
+    })),
+  },
   {
     label: 'For Members',
     href: '/for-members',
@@ -69,26 +77,29 @@ export default function Header() {
 
               if (link.children?.length) {
                 return (
-                  <div key={link.href} className="relative group/dd">
+                  <div key={link.href} className="relative group/dd inline-flex items-center">
                     <Link href={link.href} className={linkClass}>
                       {link.label}
                     </Link>
                     <div className="absolute left-0 top-full pt-3 hidden group-hover/dd:block">
                       <div className="bg-white border border-black/10 rounded-md shadow-lg py-2 min-w-[220px]">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className={
-                              'block px-4 py-2 text-sm font-semibold tracking-wider uppercase transition-colors border-l-4 ' +
-                              (child.href === pathname
-                                ? 'text-[#772432] border-[#772432]'
-                                : 'text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
-                            }
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                        {link.children.map((child) => {
+                          const childClass =
+                            'block px-4 py-2 text-sm font-semibold tracking-wider uppercase transition-colors border-l-4 ' +
+                            (child.href === pathname
+                              ? 'text-[#772432] border-[#772432]'
+                              : 'text-[#1C1C1C] border-transparent hover:text-[#772432] hover:border-[#772432]')
+                          const isHashLink = child.href.includes('#')
+                          return isHashLink ? (
+                            <a key={child.href} href={child.href} className={childClass}>
+                              {child.label}
+                            </a>
+                          ) : (
+                            <Link key={child.href} href={child.href} className={childClass}>
+                              {child.label}
+                            </Link>
+                          )
+                        })}
                       </div>
                     </div>
                   </div>
@@ -138,16 +149,30 @@ export default function Header() {
                   >
                     {link.label}
                   </Link>
-                  {link.children?.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="ml-4 text-sm font-semibold tracking-wider uppercase text-[#1C1C1C]/70 hover:text-[#772432]"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                  {link.children?.map((child) => {
+                    const isHashLink = child.href.includes('#')
+                    const childClass =
+                      'ml-4 text-sm font-semibold tracking-wider uppercase text-[#1C1C1C]/70 hover:text-[#772432]'
+                    return isHashLink ? (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={childClass}
+                      >
+                        {child.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={childClass}
+                      >
+                        {child.label}
+                      </Link>
+                    )
+                  })}
                 </div>
               ))}
               <Link
