@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { SITE_URL } from '@/lib/site'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import QuickFacts from '@/components/QuickFacts'
@@ -17,8 +19,15 @@ const HOMEPAGE_FAQS = [
   },
   {
     question: 'What does membership cost?',
-    answer:
-      'Dues are billed twice a year and cover the venue, Toastmasters International fees, and essentials like name badges. For current pricing, email our VP of Membership at vpm-499@toastmastersclubs.org.',
+    answer: (
+      <>
+        Dues are billed twice a year and cover the venue, Toastmasters International fees, and essentials like name badges. For current pricing, email our{' '}
+        <Link href="/leadership#vp-of-membership" className="text-[#772432] underline hover:no-underline">
+          VP of Membership
+        </Link>
+        {' '}at vpm-499@toastmastersclubs.org.
+      </>
+    ),
   },
   {
     question: 'Any additional costs?',
@@ -95,9 +104,89 @@ const FIRST_VISIT_STEPS = [
   },
 ]
 
+const ORGANIZATION_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Gilbert Toastmasters',
+  alternateName: 'Gilbert Toastmasters Club #499',
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/Toastmasters-International-logo-color-300.webp`,
+  description:
+    'Public speaking and leadership club meeting Thursdays at 7pm in Gilbert, Arizona. President’s Distinguished every year since 1978.',
+  foundingDate: '1978',
+  location: {
+    '@type': 'Place',
+    name: 'Greenfield Junior High Library',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '101 S Greenfield Rd',
+      addressLocality: 'Gilbert',
+      addressRegion: 'AZ',
+      postalCode: '85296',
+      addressCountry: 'US',
+    },
+  },
+  sameAs: [
+    'https://www.facebook.com/groups/116646860626/',
+    'https://www.instagram.com/gilberttm499/',
+    'https://www.youtube.com/channel/UCENkiV73Ti42Xzz9m2v3Vlg',
+    'https://www.linkedin.com/company/gilbert-toastmasters',
+  ],
+}
+
+const EVENT_SCHEDULE_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'Gilbert Toastmasters Weekly Meeting',
+  description:
+    'Open weekly meeting of Gilbert Toastmasters Club #499. Guests welcome. Public speaking practice, feedback, and leadership development.',
+  eventSchedule: {
+    '@type': 'Schedule',
+    repeatFrequency: 'P1W',
+    byDay: 'https://schema.org/Thursday',
+    startTime: '19:00',
+    endTime: '20:30',
+  },
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  location: {
+    '@type': 'Place',
+    name: 'Greenfield Junior High Library',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '101 S Greenfield Rd',
+      addressLocality: 'Gilbert',
+      addressRegion: 'AZ',
+      postalCode: '85296',
+      addressCountry: 'US',
+    },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Gilbert Toastmasters',
+    url: SITE_URL,
+  },
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: SITE_URL,
+  },
+}
+
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(EVENT_SCHEDULE_SCHEMA) }}
+      />
       <Header />
       <Hero />
       <QuickFacts />
@@ -122,7 +211,11 @@ export default function Home() {
         faqs={HOMEPAGE_FAQS}
         subhead={
           <>
-            Still wondering? Email our VP of Membership at{' '}
+            Still wondering? Email our{' '}
+            <Link href="/leadership#vp-of-membership" className="underline hover:text-[#772432]">
+              VP of Membership
+            </Link>
+            {' '}at{' '}
             <a
               href="mailto:vpm-499@toastmastersclubs.org"
               className="underline hover:text-[#772432]"

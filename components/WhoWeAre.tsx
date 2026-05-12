@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 export default function WhoWeAre() {
@@ -56,12 +57,12 @@ export default function WhoWeAre() {
               And we give the kind of honest, useful feedback that actually
               helps people improve.
             </p>
-            <a
-              href="#"
+            <Link
+              href="/leadership"
               className="inline-block rounded-full border border-[#1C1C1C] text-[#1C1C1C] font-semibold text-sm px-6 py-3 hover:bg-[#1C1C1C] hover:text-[#F2DF74] transition-colors"
             >
               Meet the officer team
-            </a>
+            </Link>
           </div>
 
           {/* Right — Photo collage */}

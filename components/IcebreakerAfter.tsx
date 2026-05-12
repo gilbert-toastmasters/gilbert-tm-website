@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function IcebreakerAfter() {
   return (
@@ -29,7 +30,7 @@ export default function IcebreakerAfter() {
               After the meeting, sit down with your evaluator to go over their notes. Ask questions. This conversation is often more valuable than the evaluation itself.
             </p>
             <p>
-              Then mark the project complete in Base Camp. If you&apos;re not sure how, ask your mentor or the VPE.
+              Then mark the project complete in Base Camp. If you&apos;re not sure how, ask your mentor or the <Link href="/leadership#vp-of-education" className="text-[#772432] underline hover:no-underline">VPE</Link>.
             </p>
             <p>
               And take a second to appreciate what you just did. Every member in that room gave an Icebreaker once. They remember what it felt like. That&apos;s why they&apos;ll be cheering for you.

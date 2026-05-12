@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const STEPS = [
   {
@@ -59,7 +60,7 @@ export default function Pathways() {
         </div>
 
         <p className="text-[#1C1C1C]/80 text-base md:text-[17px] leading-relaxed text-center mt-12 md:mt-16 max-w-2xl mx-auto">
-          If you get stuck with Base Camp, ask your mentor or any officer. Most of us have been through the same learning curve.
+          If you get stuck with Base Camp, ask your mentor or <Link href="/leadership" className="text-[#772432] underline hover:no-underline">any officer</Link>. Most of us have been through the same learning curve.
         </p>
       </div>
     </section>

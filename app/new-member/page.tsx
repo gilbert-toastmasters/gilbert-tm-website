@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Header from '@/components/Header'
 import NewMemberHero from '@/components/NewMemberHero'
 import PageNav from '@/components/PageNav'
@@ -22,23 +23,51 @@ const PAGE_NAV_ITEMS = [
 const NEW_MEMBER_FAQS = [
   {
     question: 'How can I access videos of my speeches?',
-    answer:
-      'Gilbert records speeches during meetings. Ask the Sergeant-at-Arms for links to recordings.',
+    answer: (
+      <>
+        Gilbert records speeches during meetings. Ask the{' '}
+        <Link href="/leadership#sergeant-at-arms" className="text-[#772432] underline hover:no-underline">
+          Sergeant-at-Arms
+        </Link>{' '}
+        for links to recordings.
+      </>
+    ),
   },
   {
     question: "What if I'm not interested in a Pathways project?",
-    answer:
-      "Talk to the VPE. There's flexibility in how you use your meeting time, and the VPE can help you figure out what works for your goals.",
+    answer: (
+      <>
+        Talk to the{' '}
+        <Link href="/leadership#vp-of-education" className="text-[#772432] underline hover:no-underline">
+          VPE
+        </Link>
+        . There&rsquo;s flexibility in how you use your meeting time, and the VPE can help you figure out what works for your goals.
+      </>
+    ),
   },
   {
     question: "I don't understand how Pathways works. Can someone help me?",
-    answer:
-      "Yes. Ask your mentor or any officer — they'll connect you with someone who can walk you through how the platform works. It's important for the club that members log into Pathways and complete their projects there, so don't hesitate to ask for help.",
+    answer: (
+      <>
+        Yes. Ask your mentor or{' '}
+        <Link href="/leadership" className="text-[#772432] underline hover:no-underline">
+          any officer
+        </Link>
+        {' '}— they&rsquo;ll connect you with someone who can walk you through how the platform works. It&rsquo;s important for the club that members log into Pathways and complete their projects there, so don&rsquo;t hesitate to ask for help.
+      </>
+    ),
   },
   {
     question: "What should I do if I'm struggling to choose an elective project?",
-    answer:
-      "Your mentor is the best resource here. They've been through the paths and can help you pick something that matches where you are. The VPE can also point you in the right direction.",
+    answer: (
+      <>
+        Your mentor is the best resource here. They&rsquo;ve been through the paths and can help you pick something that matches where you are. The{' '}
+        <Link href="/leadership#vp-of-education" className="text-[#772432] underline hover:no-underline">
+          VPE
+        </Link>{' '}
+        can also point you in the right direction.
+      </>
+    ),
   },
   {
     question: "What should I do if I'm not available?",

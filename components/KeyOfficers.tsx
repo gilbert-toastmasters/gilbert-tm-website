@@ -9,7 +9,7 @@ const OFFICERS = [
     description:
       "The VPE manages the meeting schedule. Reach out to introduce yourself, share any upcoming travel or conflicts, and talk about when your Icebreaker might be scheduled. You don't need to chase a date — they'll assign it — but keeping them in the loop helps.",
     cta: 'See current VPE',
-    href: '#',
+    href: '/leadership#vp-of-education',
     image: '/images/officers-placeholder.webp',
   },
   {
@@ -17,7 +17,7 @@ const OFFICERS = [
     description:
       'The VP of Mentoring matches you with a mentor — an experienced member who can answer your questions, help you prep for speeches, and give you honest feedback. Before you reach out, have two or three people in mind whose speaking style you admire.',
     cta: 'See current VP of Mentoring',
-    href: '#',
+    href: '/leadership#vp-of-mentoring',
     image: '/images/officers-placeholder.webp',
   },
 ]

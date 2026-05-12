@@ -1,4 +1,7 @@
+import Link from 'next/link'
 import { ReactNode } from 'react'
+
+const officerLinkClass = 'text-[#772432] underline hover:no-underline'
 
 export type Section = { label?: string; body: ReactNode }
 export type Role = {
@@ -19,14 +22,16 @@ export const ROLES: Role[] = [
         body: "You run the first half of the meeting. The General Evaluator takes the second half. You're the host, the traffic controller, and the person responsible for making sure everything moves.",
       },
       {
-        body: "As soon as you're assigned, reach out to the VPE to confirm you received the assignment. Then get to work.",
+        body: (
+          <>As soon as you&apos;re assigned, reach out to the <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> to confirm you received the assignment. Then get to work.</>
+        ),
       },
       {
         label: 'Before the meeting',
         body: (
           <>
             <p>Contact the speakers and the Table Topics Master. Confirm they&apos;ll be at the meeting. You can find contact information on the 4-week schedule.</p>
-            <p className="mt-3">Collect details from each speaker and send one email to the VPE by Wednesday at 7pm. For each speaker, the VPE needs:</p>
+            <p className="mt-3">Collect details from each speaker and send one email to the <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> by Wednesday at 7pm. For each speaker, the VPE needs:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li>Speaker&apos;s name</li>
               <li>Path name (exact name as it appears in Pathways)</li>
@@ -34,7 +39,7 @@ export const ROLES: Role[] = [
               <li>Speech title</li>
               <li>Whether they need a projector (yes or no)</li>
             </ul>
-            <p className="mt-3">If a speaker needs a projector, email the Sergeant at Arms by Wednesday evening and remind the speaker to bring their own laptop.</p>
+            <p className="mt-3">If a speaker needs a projector, email the <Link href="/leadership#sergeant-at-arms" className={officerLinkClass}>Sergeant at Arms</Link> by Wednesday evening and remind the speaker to bring their own laptop.</p>
             <p className="mt-3">Getting the exact path and project names matters. It&apos;s how the VPE updates the club&apos;s records accurately.</p>
             <p className="mt-3">If a speaker can&apos;t make it, it&apos;s their responsibility to find a replacement and let you know.</p>
             <p className="mt-3">Start this process by the weekend before your meeting. You may need to follow up more than once.</p>
@@ -46,7 +51,7 @@ export const ROLES: Role[] = [
         body: (
           <>
             <p>Huddle with the General Evaluator and Table Topics Master before the meeting starts. Confirm the lineup. Check that all functionaries are present. If someone is missing, the GE needs to recruit a fill-in before things get going.</p>
-            <p className="mt-3">The President will introduce you. From there, you&apos;re running things.</p>
+            <p className="mt-3">The <Link href="/leadership#president" className={officerLinkClass}>President</Link> will introduce you. From there, you&apos;re running things.</p>
             <p className="mt-3">Follow the agenda. Make a few comments about the meeting theme if you&apos;d like, but keep them brief. Your job is to move the meeting along and give time to the people who are there to speak. The Table Topics Master should wrap up by about 7:30 PM.</p>
             <p className="mt-3">Introduce the functionaries, the Table Topics Master, each evaluator, and each speaker. Don&apos;t just read names and titles. Give the audience a reason to pay attention. A brief, engaging setup makes a difference.</p>
             <p className="mt-3">After each speaker finishes, ask the Timer for one timed minute so members can complete their written evaluations.</p>
@@ -78,11 +83,11 @@ export const ROLES: Role[] = [
         label: 'Before the meeting',
         body: (
           <>
-            <p>Email all functionaries as soon as you receive the schedule from the VPE. Aim to get your email out on Sunday. You&apos;re contacting everyone except the Toastmaster, Table Topics Master, and speakers. Ask each person to confirm they&apos;ll fulfill their role or find a substitute.</p>
+            <p>Email all functionaries as soon as you receive the schedule from the <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link>. Aim to get your email out on Sunday. You&apos;re contacting everyone except the Toastmaster, Table Topics Master, and speakers. Ask each person to confirm they&apos;ll fulfill their role or find a substitute.</p>
             <p className="mt-3">Emphasize that if they can&apos;t make it, it&apos;s their responsibility to find a replacement and notify both you and the VPE.</p>
             <p className="mt-3">If you don&apos;t hear back by Monday, follow up. Get on the phone Tuesday night for anyone who hasn&apos;t responded to email. By Tuesday, if you&apos;re still missing functionaries, send an email to the full club asking for volunteers.</p>
             <p className="mt-3">Send the completed lineup to the VPE by Wednesday evening so they can prepare the agenda. Send a copy to the Toastmaster and Table Topics Master so they can plan accordingly.</p>
-            <p className="mt-3">Before the meeting, have the President sign a copy of the Vickie Tresiak Spirit Award. You&apos;ll be presenting this later in the meeting.</p>
+            <p className="mt-3">Before the meeting, have the <Link href="/leadership#president" className={officerLinkClass}>President</Link> sign a copy of the Vickie Tresiak Spirit Award. You&apos;ll be presenting this later in the meeting.</p>
           </>
         ),
       },
@@ -105,7 +110,7 @@ export const ROLES: Role[] = [
             <p className="mt-3">Present the Vickie Tresiak Spirit Award first. This is your pick. Choose the member who went beyond the call of duty to help make the meeting successful. Vickie Tresiak was an enthusiastic member of Gilbert Toastmasters who passed away. This award honors her spirit.</p>
             <p className="mt-3">Then present the remaining awards when they&apos;re brought to you. Announce them in this order: Best Table Topics, Best Evaluator, Best Speaker.</p>
             <p className="mt-3">If time allows, give your evaluation of the meeting. This isn&apos;t a summary of what happened. It&apos;s feedback. Were the evaluations useful? Did the meeting flow well? What could have been done better? Be specific.</p>
-            <p className="mt-3">Turn the meeting over to the President. You&apos;re done.</p>
+            <p className="mt-3">Turn the meeting over to the <Link href="/leadership#president" className={officerLinkClass}>President</Link>. You&apos;re done.</p>
           </>
         ),
       },

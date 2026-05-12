@@ -1,15 +1,26 @@
-const ITEMS = [
+import Link from 'next/link'
+import { ReactNode } from 'react'
+
+const officerLinkClass = 'text-[#772432] underline hover:no-underline'
+
+const ITEMS: { num: string; lead: string; body: ReactNode }[] = [
   {
     num: '01',
     lead: "You don't schedule your own speech.",
-    body:
-      "The VPE assigns your Icebreaker date. You'll typically give it about 6 to 8 weeks after joining — enough time to attend a few meetings, find your mentor, and prepare.",
+    body: (
+      <>
+        The <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> assigns your Icebreaker date. You&apos;ll typically give it about 6 to 8 weeks after joining — enough time to attend a few meetings, find your mentor, and prepare.
+      </>
+    ),
   },
   {
     num: '02',
     lead: "You don't choose your evaluator.",
-    body:
-      'The VPE assigns one to you. Your evaluator is an experienced member who will give you both a verbal evaluation during the meeting and written feedback afterward.',
+    body: (
+      <>
+        The <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> assigns one to you. Your evaluator is an experienced member who will give you both a verbal evaluation during the meeting and written feedback afterward.
+      </>
+    ),
   },
   {
     num: '03',

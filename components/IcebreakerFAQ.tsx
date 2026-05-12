@@ -1,4 +1,7 @@
+import Link from 'next/link'
 import FAQ, { FAQItem } from './FAQ'
+
+const officerLinkClass = 'text-[#772432] underline hover:no-underline'
 
 const FAQS: FAQItem[] = [
   {
@@ -29,7 +32,7 @@ const FAQS: FAQItem[] = [
     question: 'Do I need to schedule my Icebreaker?',
     answer: (
       <>
-        No. Pathways asks you to schedule your own speech, but at Gilbert the VPE assigns your Icebreaker date. You&apos;ll see it on the schedule — that&apos;s your cue to start preparing.
+        No. Pathways asks you to schedule your own speech, but at Gilbert the <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> assigns your Icebreaker date. You&apos;ll see it on the schedule — that&apos;s your cue to start preparing.
       </>
     ),
   },
@@ -37,7 +40,7 @@ const FAQS: FAQItem[] = [
     question: 'Do I need to pick my evaluator?',
     answer: (
       <>
-        No. Pathways asks you to choose one, but at Gilbert the VPE assigns your evaluator. They&apos;ll be listed on the schedule next to your speech.
+        No. Pathways asks you to choose one, but at Gilbert the <Link href="/leadership#vp-of-education" className={officerLinkClass}>VPE</Link> assigns your evaluator. They&apos;ll be listed on the schedule next to your speech.
       </>
     ),
   },
