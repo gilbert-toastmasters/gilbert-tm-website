@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const post = getPost(slug)
     const url = `${SITE_URL}/blog/${slug}/`
+    const ogImage = `${SITE_URL}/images/og-image.webp`
     return {
       title: post.title,
       description: post.excerpt,
@@ -30,11 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         publishedTime: post.date,
         authors: post.author ? [post.author] : undefined,
         tags: post.tags,
+        images: [{ url: ogImage, width: 1200, height: 630 }],
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         title: post.title,
         description: post.excerpt,
+        images: [ogImage],
       },
     }
   } catch {
