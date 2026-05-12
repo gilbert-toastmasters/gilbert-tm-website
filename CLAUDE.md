@@ -95,15 +95,39 @@ gilbert-tm/
 - Toastmasters disclaimer
 
 ## Pages to Create
-- [ ] /meeting-roles - Meeting roles explained
-- [ ] /for-members - Members-only resources
-- [ ] /blog - Club blog/news
+- [x] /meeting-roles - Meeting roles explained
+- [ ] /for-members - Members-only resources (currently the nav parent `/for-members` is a placeholder; submenu items exist)
+- [x] /blog - Club blog/news
+
+## Blog Posts
+
+Posts live in `content/blog/` as markdown files. The slug is the filename without `.md`. Routes are generated at build via `generateStaticParams` in `app/blog/[slug]/page.tsx`.
+
+### Required frontmatter
+```yaml
+---
+title: "Sentence-case or title-case (preserve author's casing for republished posts)"
+date: "2024-03-14"               # ISO YYYY-MM-DD
+excerpt: "1–2 sentences, under 160 chars. Used in post lists and meta description."
+author: "First Last"             # or "First L."
+tags: ["speaking-tips"]          # array, at least one
+---
+```
+
+### Conventions
+- Slugs match the WordPress auto-slug pattern (`how-to-…`, `omg-i-have-to-…`) so the CloudFront redirect rule in `scripts/cloudfront-redirect-function.js` catches legacy `/yyyy/mm/dd/slug/` URLs and 301s them to `/blog/slug/`.
+- Cross-linking: link **from blog posts to evergreen pages** (`/leadership#…`, `/meeting-roles#…`, `/evaluations`) — never link **from a page back to a blog post** (aging blog content can quietly point readers at stale info).
+- Body H2/H3 are rendered with `.blog-prose` styles in `app/globals.css`. Use markdown — no inline HTML needed.
+- A "More from the blog" section auto-renders the 3 most recent other posts at the bottom of each post.
+- The blog post page emits JSON-LD `BlogPosting` schema, OpenGraph + Twitter card meta tags, and a `canonical` link.
+- No featured image. Blog is text-only by design.
+
+### Tags in use
+`club`, `speaking-tips`, `member-stories`, `meeting-roles`, `evaluations`. Add new tags sparingly.
 
 ## TODO
 - [ ] Change arrows back to white (currently colored for debugging)
-- [ ] Create Meeting Roles page
-- [ ] Create For Members page
-- [ ] Create Blog page
+- [ ] Create For Members landing page
 
 ## Development Commands
 ```bash

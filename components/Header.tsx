@@ -28,6 +28,7 @@ const NAV_LINKS: NavItem[] = [
     children: [
       { label: 'New Member Area', href: '/new-member' },
       { label: 'Icebreaker Guide', href: '/icebreaker' },
+      { label: 'Evaluations', href: '/evaluations' },
       { label: 'Leadership Team', href: '/leadership' },
     ],
   },

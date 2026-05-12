@@ -162,8 +162,12 @@ export const ROLES: Role[] = [
         body: 'Evaluations run 2 to 3:30 minutes. Green at 2:00, yellow at 2:30, red at 3:00, disqualified for awards at 3:30.',
       },
       {
-        label: 'Full guide coming',
-        body: 'A standalone Evaluator guide will live at /evaluator (in progress).',
+        label: 'Full guide',
+        body: (
+          <>
+            See the <Link href="/evaluations" className={officerLinkClass}>full evaluations guide</Link> — frameworks, what to look for, and tips for first-time evaluators.
+          </>
+        ),
       },
     ],
   },
