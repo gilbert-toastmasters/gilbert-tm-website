@@ -4,8 +4,9 @@
 Website for Gilbert Toastmasters Club #499, featuring a fun and professional design with Toastmasters brand colors and hand-drawn elements.
 
 ## Live Site
-- **Vercel URL**: Deployed on Vercel
-- **GitHub**: https://github.com/mariefeutrierspeaks-boop/gilbert-tm-website
+- **Preview URL (Vercel, auto-deploys on push to main):** https://gilbert-tm-website.vercel.app
+- **GitHub:** https://github.com/gilbert-toastmasters/gilbert-tm-website (org-owned for handoff)
+- **Production domain (planned):** gilberttm.org (not yet cutover from WordPress)
 
 ## Tech Stack
 - **Framework**: Next.js 16
