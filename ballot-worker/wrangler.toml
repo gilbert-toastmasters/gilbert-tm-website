@@ -1,0 +1,12 @@
+name = "gilbert-tm-ballot"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+
+# Set the admin password before deploy:
+#   wrangler secret put ADMIN_PASSWORD
+#
+# Create the KV namespace once, then paste the id below:
+#   wrangler kv namespace create BALLOT_KV
+[[kv_namespaces]]
+binding = "BALLOT_KV"
+id = "REPLACE_WITH_KV_ID"

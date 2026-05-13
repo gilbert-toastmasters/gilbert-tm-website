@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import BlogHero from '@/components/BlogHero'
 import Footer from '@/components/Footer'
 import { getAllPosts, formatDate } from '@/lib/blog'
 
@@ -16,20 +17,9 @@ export default function BlogIndex() {
   return (
     <main>
       <Header />
+      <BlogHero />
       <section className="bg-white">
         <div className="max-w-[900px] mx-auto px-6 md:px-10 py-20 md:py-28">
-          <div className="mb-14 md:mb-20">
-            <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-4">
-              Blog
-            </p>
-            <h1 className="font-extrabold text-[#1C1C1C] text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
-              Notes from the club.
-            </h1>
-            <p className="text-lg md:text-xl text-[#1C1C1C]/80 leading-relaxed max-w-2xl">
-              Speech reflections, meeting highlights, member spotlights, and the occasional opinion on what makes public speaking actually work.
-            </p>
-          </div>
-
           {posts.length === 0 ? (
             <p className="text-[#1C1C1C]/70 text-lg">No posts yet. Check back soon.</p>
           ) : (
