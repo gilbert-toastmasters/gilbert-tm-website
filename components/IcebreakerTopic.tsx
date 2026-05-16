@@ -10,18 +10,25 @@ const STARTERS = [
 
 const APPROACHES = [
   {
-    name: 'Chronological',
-    body: 'My journey from childhood to now.',
+    name: 'FORD',
+    body: 'A four-part framework — one short story for each:',
+    ford: [
+      { letter: 'F', label: 'Family' },
+      { letter: 'O', label: 'Occupation' },
+      { letter: 'R', label: 'Recreation — what you do for fun' },
+      { letter: 'D', label: 'Dream — where you want to go' },
+    ],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="9" />
-        <polyline points="12 7 12 12 15 14" />
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+        <line x1="9" y1="10" x2="9" y2="20" />
       </svg>
     ),
   },
   {
-    name: 'Themed',
-    body: 'Three things that shaped who I am.',
+    name: 'Three Things',
+    body: 'Pick three moments or experiences that shaped who you are today, and walk through each one.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polygon points="12 3 21 8 12 13 3 8 12 3" />
@@ -46,6 +53,33 @@ const APPROACHES = [
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9" />
         <polygon points="16 8 13 14 8 16 11 10 16 8" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Chronological',
+    body: 'My journey from childhood to now.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 14" />
+      </svg>
+    ),
+  },
+  {
+    name: 'A Day in My Life',
+    body: 'Walk us through a typical day — what you do, who you spend it with, what makes it yours.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="2" x2="12" y2="5" />
+        <line x1="12" y1="19" x2="12" y2="22" />
+        <line x1="2" y1="12" x2="5" y2="12" />
+        <line x1="19" y1="12" x2="22" y2="12" />
+        <line x1="4.9" y1="4.9" x2="7" y2="7" />
+        <line x1="17" y1="17" x2="19.1" y2="19.1" />
+        <line x1="4.9" y1="19.1" x2="7" y2="17" />
+        <line x1="17" y1="7" x2="19.1" y2="4.9" />
       </svg>
     ),
   },
@@ -93,10 +127,10 @@ export default function IcebreakerTopic() {
         </p>
 
         <p className="text-[#1C1C1C]/80 text-base md:text-[17px] leading-relaxed mb-8">
-          Members approach this differently. Some walk through their life chronologically. Some pick a theme &mdash; &ldquo;three things that shaped who I am.&rdquo; Some tell one story that captures something essential about them. Some talk about why they walked through the door in the first place.
+          Members approach this differently. Some use the FORD framework. Some pick three moments that shaped them. Some tell one story that captures something essential. Some talk about why they walked through the door in the first place. Some walk through their life chronologically, or describe a typical day.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {APPROACHES.map((a) => (
             <div
               key={a.name}
@@ -111,6 +145,19 @@ export default function IcebreakerTopic() {
               <p className="text-[#1C1C1C]/70 text-sm leading-relaxed">
                 {a.body}
               </p>
+              {'ford' in a && a.ford ? (
+                <ul className="mt-3 space-y-1.5">
+                  {a.ford.map((item) => (
+                    <li
+                      key={item.letter}
+                      className="flex items-start gap-2 text-[#1C1C1C]/80 text-sm leading-relaxed"
+                    >
+                      <span className="font-bold text-[#772432] w-4 shrink-0">{item.letter}</span>
+                      <span>{item.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>
