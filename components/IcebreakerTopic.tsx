@@ -8,27 +8,17 @@ const STARTERS = [
   'A memorable story from your life.',
 ]
 
-const APPROACHES = [
-  {
-    name: 'FORD',
-    body: 'A four-part framework — one short story for each:',
-    ford: [
-      { letter: 'F', label: 'Family' },
-      { letter: 'O', label: 'Occupation' },
-      { letter: 'R', label: 'Recreation — what you do for fun' },
-      { letter: 'D', label: 'Dream — where you want to go' },
-    ],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-        <line x1="9" y1="10" x2="9" y2="20" />
-      </svg>
-    ),
-  },
+const FORD_ITEMS = [
+  { letter: 'F', name: 'Family', description: 'where you come from' },
+  { letter: 'O', name: 'Occupation', description: 'what you do all day' },
+  { letter: 'R', name: 'Recreation', description: 'what you do for fun' },
+  { letter: 'D', name: 'Dream', description: 'where you want to go' },
+]
+
+const OTHER_APPROACHES = [
   {
     name: 'Three Things',
-    body: 'Pick three moments or experiences that shaped who you are today, and walk through each one.',
+    body: 'Three moments or experiences that shaped who you are today, and walk through each one.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polygon points="12 3 21 8 12 13 3 8 12 3" />
@@ -58,28 +48,11 @@ const APPROACHES = [
   },
   {
     name: 'Chronological',
-    body: 'My journey from childhood to now.',
+    body: 'Walk through your journey from childhood to now.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9" />
         <polyline points="12 7 12 12 15 14" />
-      </svg>
-    ),
-  },
-  {
-    name: 'A Day in My Life',
-    body: 'Walk us through a typical day — what you do, who you spend it with, what makes it yours.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <line x1="12" y1="2" x2="12" y2="5" />
-        <line x1="12" y1="19" x2="12" y2="22" />
-        <line x1="2" y1="12" x2="5" y2="12" />
-        <line x1="19" y1="12" x2="22" y2="12" />
-        <line x1="4.9" y1="4.9" x2="7" y2="7" />
-        <line x1="17" y1="17" x2="19.1" y2="19.1" />
-        <line x1="4.9" y1="19.1" x2="7" y2="17" />
-        <line x1="17" y1="7" x2="19.1" y2="4.9" />
       </svg>
     ),
   },
@@ -93,50 +66,97 @@ const TEXTURE_BG = {
   backgroundRepeat: 'repeat, repeat',
 }
 
+const SECTION_LABEL = 'text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432]'
+
 export default function IcebreakerTopic() {
   return (
     <section className="bg-white pt-20 md:pt-28">
-      <div className="max-w-4xl mx-auto px-6 pb-16 md:pb-20">
-        <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
-          Your topic
-        </p>
+      <div className="max-w-5xl mx-auto px-6 pb-16 md:pb-20">
+        <p className={`${SECTION_LABEL} mb-3`}>Your topic</p>
         <h2 className="font-extrabold text-[#1C1C1C] text-4xl md:text-5xl leading-[1.06] tracking-tight mb-8">
-          What to Talk About
+          What to talk about.
         </h2>
 
-        <p className="text-[#1C1C1C]/80 text-lg md:text-xl leading-relaxed mb-10">
+        <p className="text-[#1C1C1C]/80 text-lg md:text-xl leading-relaxed mb-10 max-w-3xl text-pretty">
           The question isn&apos;t &ldquo;what&apos;s the right thing to say?&rdquo; It&apos;s &ldquo;what do I want these people to know about me?&rdquo;
         </p>
 
-        <div className="bg-[#F5F5F5] border-l-4 border-[#F2DF74] rounded-r-md p-6 md:p-8 mb-10">
-          <p className="font-bold text-[#1C1C1C] text-base md:text-lg mb-4">
-            Some places to start:
-          </p>
-          <ul className="space-y-2">
+        <div className="mb-6">
+          <p className={`${SECTION_LABEL} mb-4`}>Some places to start</p>
+          <div className="flex flex-wrap gap-2">
             {STARTERS.map((starter) => (
-              <li key={starter} className="flex items-start gap-3 text-[#1C1C1C]/85 text-base md:text-[17px] leading-relaxed">
-                <span className="mt-2 block w-2 h-2 rounded-full bg-[#772432] shrink-0" aria-hidden="true" />
-                <span>{starter}</span>
-              </li>
+              <span
+                key={starter}
+                className="inline-flex items-center bg-[#F2DF74] text-[#1C1C1C] text-sm md:text-base px-3 py-1.5 rounded-md leading-snug"
+              >
+                {starter}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
 
-        <p className="text-[#1C1C1C]/80 text-base md:text-[17px] leading-relaxed mb-6">
+        <p className="text-[#1C1C1C]/80 text-base md:text-[17px] leading-relaxed max-w-3xl mb-14 md:mb-16">
           You don&apos;t need to cover all of that. Pick two or three things that feel right and build from there.
         </p>
 
-        <p className="text-[#1C1C1C]/80 text-base md:text-[17px] leading-relaxed mb-8">
-          Members approach this differently. Some use the FORD framework. Some pick three moments that shaped them. Some tell one story that captures something essential. Some talk about why they walked through the door in the first place. Some walk through their life chronologically, or describe a typical day.
-        </p>
+        <p className={`${SECTION_LABEL} mb-5`}>Frameworks members use</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {APPROACHES.map((a) => (
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 mb-12 md:mb-14 items-stretch">
+          <div className="md:col-span-3 bg-[#772432] text-white rounded-xl p-7 md:p-9">
+            <p className="text-xs font-[Montserrat] font-bold tracking-[0.18em] uppercase text-[#F2DF74] mb-4">
+              Most-used framework
+            </p>
+            <h3 className="font-extrabold text-white text-4xl md:text-5xl tracking-tight mb-4">
+              FORD
+            </h3>
+            <p className="text-white/85 text-base md:text-lg leading-relaxed mb-8 max-w-md">
+              A four-part framework &mdash; one short story for each part. Easy to plan, easy to remember on stage.
+            </p>
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              {FORD_ITEMS.map((item) => (
+                <div key={item.letter} className="bg-white/10 rounded-lg p-4 md:p-5">
+                  <p className="font-extrabold text-[#F2DF74] text-2xl leading-none mb-3">
+                    {item.letter}
+                  </p>
+                  <p className="font-bold text-white text-base leading-tight mb-1">
+                    {item.name}
+                  </p>
+                  <p className="text-white/70 text-sm leading-snug">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <article className="md:col-span-2 bg-white border border-black/10 rounded-lg p-7 flex flex-col">
+            <div className="font-bold text-[#F2DF74] text-5xl leading-none mb-3">
+              &ldquo;
+            </div>
+            <blockquote className="text-[#1C1C1C] text-[17px] leading-relaxed flex-1 mb-5">
+              I picked three cities I lived in: Paris, where I grew up, New York, where I went to college, and Gilbert, where I live now.
+            </blockquote>
+            <div className="flex items-center gap-3 border-t border-black/10 pt-4">
+              <div className="w-11 h-11 rounded-full bg-[#772432] text-white font-bold text-sm flex items-center justify-center shrink-0">
+                JD
+              </div>
+              <div>
+                <p className="font-bold text-base text-[#1C1C1C] leading-tight">John D</p>
+                <p className="text-xs text-[#1C1C1C]/60 mt-0.5">Imaginary Icebreaker</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p className={`${SECTION_LABEL} mb-5`}>Or try one of these</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+          {OTHER_APPROACHES.map((a) => (
             <div
               key={a.name}
               className="border border-black/10 rounded-md px-5 py-6"
             >
-              <div className="w-10 h-10 text-[#772432] mb-4">
+              <div className="w-9 h-9 text-[#772432] mb-3">
                 {a.icon}
               </div>
               <h3 className="font-bold text-[#1C1C1C] text-lg leading-tight tracking-tight mb-2">
@@ -145,19 +165,6 @@ export default function IcebreakerTopic() {
               <p className="text-[#1C1C1C]/70 text-sm leading-relaxed">
                 {a.body}
               </p>
-              {'ford' in a && a.ford ? (
-                <ul className="mt-3 space-y-1.5">
-                  {a.ford.map((item) => (
-                    <li
-                      key={item.letter}
-                      className="flex items-start gap-2 text-[#1C1C1C]/80 text-sm leading-relaxed"
-                    >
-                      <span className="font-bold text-[#772432] w-4 shrink-0">{item.letter}</span>
-                      <span>{item.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
             </div>
           ))}
         </div>
@@ -171,9 +178,7 @@ export default function IcebreakerTopic() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
             <div>
-              <p className="text-sm font-[Montserrat] font-bold tracking-[0.14em] uppercase text-[#772432] mb-3">
-                Example
-              </p>
+              <p className={`${SECTION_LABEL} mb-3`}>Example</p>
               <h3 className="font-extrabold text-[#1C1C1C] text-3xl md:text-4xl leading-tight tracking-tight mb-4">
                 Watch an Icebreaker
               </h3>

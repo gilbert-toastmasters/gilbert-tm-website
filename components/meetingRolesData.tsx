@@ -247,6 +247,28 @@ export const ROLES: Role[] = [
     sections: [
       { body: 'You keep the meeting honest about time.' },
       {
+        label: 'What to say (script for first-timers)',
+        body: (
+          <>
+            <div className="bg-[#F5F5F5] border-l-4 border-[#F2DF74] rounded-r-md p-5 md:p-6">
+              <div className="text-[#1C1C1C] text-base md:text-[17px] leading-relaxed space-y-3">
+                <p>Greetings, fellow Toastmasters, and guests.</p>
+                <p>As Timer, it&apos;s my role to keep track of time for all speakers tonight.</p>
+                <p>For our guests, here&apos;s how it works. There&apos;s a light tower at the back of the room. When a speaker reaches their minimum time, the light turns green. Halfway through their remaining time, it turns yellow. When their time is up, it turns red. That means wrap up. If the light starts blinking, they&apos;ve gone over time.</p>
+                <p>For Table Topics, speakers need to speak for at least one minute to qualify.</p>
+                <p>Prepared speeches tonight are 5 to 7 minutes.</p>
+                <p className="text-[#1C1C1C]/65 italic">(If applicable: &ldquo;We also have a [special speech / Icebreaker / longer project] tonight. [Speaker name]&apos;s time is [4 minutes / 10 minutes].&rdquo;)</p>
+                <p>Evaluations are 2 to 3 minutes.</p>
+                <p>Thank you.</p>
+              </div>
+            </div>
+            <p className="mt-4 text-base md:text-[17px]">
+              Quick reference during the meeting: <Link href="/timing-card" className={officerLinkClass}>open the Timing Card →</Link>
+            </p>
+          </>
+        ),
+      },
+      {
         label: 'Before the meeting',
         body: 'Set up your station. Plug in the light tower, grab the remote and test it to make sure it works, and have the bell and tracking sheet ready. Confirm speech lengths with each speaker.',
       },
@@ -274,7 +296,7 @@ export const ROLES: Role[] = [
               <li>Yellow at the midpoint</li>
               <li>Red at the maximum</li>
               <li>Blinking red 30 seconds past maximum, disqualified</li>
-              <li>90 seconds overtime, ring the bell</li>
+              <li>60 seconds overtime, ring the bell</li>
             </ul>
             <p className="mt-2">Qualification means speaking within 30 seconds above or below the target time.</p>
 
